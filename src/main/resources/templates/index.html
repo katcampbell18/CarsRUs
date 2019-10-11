@@ -6,25 +6,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Car Show</title>
 </head>
 <body>
 <div th:insert="base :: navbar"></div>
-<div class="jumbotron jumbotron-fluid">
-    <div class="jcontainer">
+<div class="jumbotron">
         <h1 class="display-4">Welcome to Cars 'R Us</h1>
-    </div>
+        <hr>
+        <p> Steering you in the right direction to find the right car for you!</p>
 </div>
 <div class="container">
     <div class="card-columns">
         <div th:each="car : ${cars}">
             <div class="card">
-                <img th:src="${car.image}" class="card-img-top" alt="car_image">
+<!--                <img th:src="${car.image}" class="card-img-top" alt="car_image">-->
                 <div class="card-body">
                     <h5 class="card-title" th:text="${car.make} +' ' + ${car.model}" ></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" th:text="${car.price}"></li>
+                    <li class="list-group-item" th:inline="text">MSRP $[[${car.price}]]</li>
                 </ul>
                 <div class="card-body">
                     <a th:href="@{detail_car/{id} (id=${car.id})}" class="btn btn-success">Learn More</a>

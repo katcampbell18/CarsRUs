@@ -14,21 +14,25 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home
                     </a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/car_list">View Cars</a>
-                    <a class="nav-link" href="/catg_list">View Categories</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Views
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/catg_list">View Categories</a>
+                    <a class="dropdown-item" href="/car_list">View Vehicles</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Add Entry
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/add_car">Add a Car</a>
                         <a class="dropdown-item" href="/add_categ">Add a Category</a>
+                        <a class="dropdown-item" href="/add_car">Add a Vehicle</a>
                     </div>
                 </li>
                 </li>

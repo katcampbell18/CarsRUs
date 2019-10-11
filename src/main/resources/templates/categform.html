@@ -6,20 +6,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Category Form</title>
 </head>
 <body>
 <div th:insert="base :: navbar"></div>
-<h1>Add a Category</h1>
-<div class="container">
+<div class="container-fluid">
+<h1 style="text-align: center">Add a Category</h1>
+    <div class="row align-items-center">
+<!--    <div class="col-lg-4"></div>-->
+    <div class="col-lg-3 mx-auto">
     <form action="#" th:action="@{/process_catg}" th:object="${category}" method="post">
         <input type="hidden" th:field="*{catId}" />
         <div class="form-group">
             <label>Name</label>
-            <input  name=Inputname type="text" id="*{name}" />
+            <input  name=Inputname type="text" th:field="*{name}" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
+    </div>
+<!--    <div class="col-lg-2"></div>-->
+    </div>
 </div>
 <div th:insert="base :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

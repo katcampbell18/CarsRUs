@@ -31,7 +31,7 @@ public class HomeController {
     @PostMapping("/process_car")
     public String processForm(@ModelAttribute Car car){
         carRepository.save(car);
-        return "redirect:/carlist";
+        return "redirect:/";
     }
 
     @RequestMapping("/car_list")
@@ -49,7 +49,7 @@ public class HomeController {
     @PostMapping("/process_catg")
     public String processcatgForm(@ModelAttribute Category catg){
         categoryRepository.save(catg);
-        return "redirect:/categform";
+        return "redirect:/";
     }
 
     @RequestMapping("/catg_list")
@@ -67,6 +67,7 @@ public class HomeController {
     @RequestMapping("/update_car/{id}")
     public String updateCar(@PathVariable("id") long id, Model model){
         model.addAttribute("car", carRepository.findById(id).get());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "carform";
     }
 

@@ -6,29 +6,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Car Form</title>
 </head>
 <body>
 <div th:insert="base :: navbar"></div>
-<h1>Add a Car</h1>
-<div class="container">
+
+<div class="container-fluid">
+    <h1 style="text-align: center;">Add a Car</h1>
+    <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
     <form th:action="@{/process_car}" th:object="${car}" method="post">
         <div class="form-group">
             <input type="hidden" th:field="*{id}" />
             <label>Make</label>
-            <input type="text" class="form-control" id="*{make}" >
+            <input type="text" class="form-control" th:field="*{make}" >
         </div>
         <div class="form-group">
             <label>Model</label>
-            <input type="text" class="form-control" id="*{model}">
+            <input type="text" class="form-control" th:field="*{model}">
         </div>
         <div class="form-group">
             <label>Year</label>
-            <input type="text" class="form-control" id="*{year}">
+            <input type="text" class="form-control" th:field="*{year}">
         </div>
         <div class="form-group">
             <label>MSRP</label>
-            <input type="text" class="form-control" id="*{price}">
+            <input type="number" class="form-control" th:field="*{price}" step="0.01" data-number-to-fixed="2">
         </div>
         <div class="form-group">
             <label>Category</label>
@@ -38,12 +43,17 @@
                         th:text="${category.name}"></option>
             </select>
         </div>
-        <div class="form-group">
-            <label>Upload Image</label>
-            <input type="file" class="custom-file-input" id="*{image}">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+<!--        <div class="form-group">-->
+<!--            <div class="custom-file">-->
+<!--                <input type="file" class="custom-file-input" th:src="@{${car.image}}">-->
+<!--                <label class="custom-file-label">Upload Image</label>-->
+<!--            </div>-->
+<!--        </div>-->
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
+    </div>
+    <div class="col-lg-3"></div>
+    </div>
 </div>
 <div th:insert="base :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

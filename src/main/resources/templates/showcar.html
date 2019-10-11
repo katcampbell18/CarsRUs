@@ -6,25 +6,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Car Detail</title>
 </head>
 <body>
 <div th:insert="base :: navbar"></div>
-<div class="container">
-    <div class="card" th:text="${id}">
-        <img th:src="${car.image}" class="card-img-top" alt="car_image">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${car.make} + ${car.model}" ></h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" th:text="${car.price}"></li>
-            <li class="list-group-item" th:text="${car.category.name}"></li>
-        </ul>
-        <div class="card-body">
-            <a th:href="@{update_car/{id} (id=${car.id})}" class="card-link">Update</a>
-            <a th:href="@{delete_car/{id} (id=${car.id})}" class="card-link">Delete</a>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card bg-info" style="width: 36rem;">
+            <div class="card-header" style="font-weight: bold" th:text="${car.make} + ' ' +${car.model}">
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" >Year: <span th:text="${car.year}"></span></li>
+                <li class="list-group-item" >MSRP: $<span th:text="${car.price}"></span></li>
+                <li class="list-group-item" >Category: <span th:text="${car.category.name}"></span></li>
+            </ul>
+            <div class="card-body">
+                <a th:href="@{/update_car/{id}(id=${car.id})}" class="btn btn-warning">Update this vehicle</a>
+                <span><a th:href="@{/delete_car/{id}(id=${car.id})}" class="btn btn-danger">Delete this vehicle</a></span>
+
+            </div>
         </div>
     </div>
+    <div class="col-lg-3"></div>
 </div>
 <div th:insert="base :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
