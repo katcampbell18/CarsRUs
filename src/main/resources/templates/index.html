@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
     <title>Car Show</title>
 </head>
 <body>
+<div th:insert="base :: navbar"></div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="jcontainer">
+        <h1 class="display-4">Welcome to Cars 'R Us</h1>
+    </div>
+</div>
 <div class="container">
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Make and Model</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price</li>
-            <li class="list-group-item">Category</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Update</a>
-            <a href="#" class="card-link">Delete</a>
+    <div class="card-columns">
+        <div th:each="car : ${cars}">
+            <div class="card">
+                <img th:src="${car.image}" class="card-img-top" alt="car_image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${car.make} +' ' + ${car.model}" ></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="${car.price}"></li>
+                </ul>
+                <div class="card-body">
+                    <a th:href="@{detail_car/{id} (id=${car.id})}" class="btn btn-success">Learn More</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<div th:insert="base :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
